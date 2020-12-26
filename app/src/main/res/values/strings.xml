@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">TMDB Movie List</string>
+    <string name="splash_screen_tmdb_logo">Splash Screen TMDb Logo</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="search">Search</string>
+    <string name="view_mode">View Mode</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="ordering_mode">Ordering Mode</string>
+    <string name="no_data">There are no data to be displayed.</string>
+    <string name="search_no_match">There are no movies that matched your query.</string>
+    <string name="overview">Overview</string>
+    <string name="overview_placeholder">Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates — including an older prisoner named Red — for his integrity and unquenchable sense of hope.</string>
+    <string name="biography_placeholder">Robert De Niro, Jr. (born August 17, 1943) is an American actor, director, and producer.\n\nHis first major film role was in 1973\'s Bang the Drum Slowly. In 1974, he played the young Vito Corleone in The Godfather Part II, a role that won him the Academy Award for Best Supporting Actor. His longtime collaboration with Martin Scorsese began with 1973\'s Mean Streets, and earned De Niro an Academy Award for Best Actor for his portrayal of Jake LaMotta in the 1980 film, Raging Bull. He was also nominated for an Academy Award for his roles in Scorsese\'s Taxi Driver (1976) and Cape Fear (1991). In addition, he received nominations for his acting in Michael Cimino\'s The Deer Hunter (1978) and Penny Marshall\'s Awakenings (1990).\n\nHe has received high critical praise in Scorsese\'s films such as for his portrayals as Travis Bickle in Taxi Driver, Jake Lamotta in Raging Bull, and as Jimmy Conway in Goodfellas. He has earned four nominations for the Golden Globe Award for Best Actor – Motion Picture Musical or Comedy: New York, New York (1977), Midnight Run (1988), Analyze This (1999) and Meet the Parents (2000). He directed A Bronx Tale (1993) and The Good Shepherd (2006).</string>
+    <string name="top_billed_cast">Top Billed Cast</string>
+    <string name="director">Director:</string>
+    <string name="writer_s">Writer(s):</string>
+    <string name="novel">Novel:</string>
+    <string name="screenplay">Screenplay:</string>
+    <string name="status">Status:</string>
+    <string name="original_language">Original Language:</string>
+    <string name="budget">Budget:</string>
+    <string name="box_office">Box Office:</string>
+    <string name="fullscreen_poster_desc">Fullscreen Poster Image</string>
+    <string name="posters">Posters</string>
+    <string name="details">Details</string>
+    <string name="detail">Detail</string>
+    <string name="search_movie">Search movie…</string>
+    <string name="spinner_dropdown_arrow">Spinner Dropdown Arrow</string>
+    <string name="profile_photo">Profile Photo</string>
+    <string name="facebook">Facebook</string>
+    <string name="biography">Biography</string>
+    <string name="no_biography">We don\'t have a biography for %s.</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="known_for">Known For</string>
+    <string name="known_for_colon">Known For:</string>
+    <string name="known_credits">Known Credits:</string>
+    <string name="gender">Gender:</string>
+    <string name="birthday">Birthday:</string>
+    <string name="day_of_death">Day of Death:</string>
+    <string name="place_of_birth">Place of Birth:</string>
+    <string name="filmography">Filmography</string>
+    <string name="twitter">Twitter</string>
+    <string name="instagram">Instagram</string>
+    
+    <string name="rating">rating</string>
+    <string name="title">title</string>
+    <string name="release_date">release date</string>
+    <string name="popularity">popularity</string>
+    <string name="searching">Searching...</string>
+    
+    <string name="about">About</string>
+    <string name="name">Lukman Hakim</string>
+    <string name="email">lukman.hakim@students.amikom.ac.id</string>
+    <string name="bachelor_of_informatics">Bachelor of Informatics</string>
+    <string name="nim">20.21.1491</string>
+    <string name="university">University of AMIKOM Yogyakarta</string>
+    <string name="github_link">GitHub Link</string>
+    <string name="redirect_confirmation">This will redirect you to GitHub.com.\nDo you want to continue?</string>
+    
+    <string name="night_mode">Night Mode</string>
+    <string name="day_mode">Day Mode</string>
+    
+    <string-array name="sorter_array">
+        <item>@string/rating</item>
+        <item>@string/title</item>
+        <item>@string/release_date</item>
+        <item>@string/popularity</item>
+    </string-array>
+</resources>

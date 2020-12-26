@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.PersonDetailFragment">
+    
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_person_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+        
+        <include
+            android:id="@+id/toolbar_person_detail"
+            layout="@layout/toolbar_person_detail" />
+    </com.google.android.material.appbar.AppBarLayout>
+    
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        
+        <LinearLayout
+            style="@style/DetailPageBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/DetailConstraintLayoutStyle"
+                android:padding="8dp">
+                
+                <ProgressBar
+                    android:id="@+id/pb_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/img_profile_photo"
+                    app:layout_constraintEnd_toEndOf="@id/img_profile_photo"
+                    app:layout_constraintStart_toStartOf="@id/img_profile_photo"
+                    app:layout_constraintTop_toTopOf="@+id/img_profile_photo" />
+                
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/img_profile_photo"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:contentDescription="@string/profile_photo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/RoundedCornersImageView"
+                    tools:src="@drawable/cast_placeholder" />
+                
+                <ImageView
+                    android:id="@+id/img_facebook_icon"
+                    style="@style/ImageViewSocialMedia"
+                    android:contentDescription="@string/facebook"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img_twitter_icon"
+                    app:layout_constraintStart_toStartOf="@+id/img_profile_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/img_profile_photo"
+                    tools:src="@drawable/ic_facebook_square" />
+                
+                <ImageView
+                    android:id="@+id/img_twitter_icon"
+                    style="@style/ImageViewSocialMedia"
+                    android:contentDescription="@string/twitter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/img_instagram_icon"
+                    app:layout_constraintStart_toEndOf="@+id/img_facebook_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/img_profile_photo"
+                    tools:src="@drawable/ic_twitter_square" />
+                
+                <ImageView
+                    android:id="@+id/img_instagram_icon"
+                    style="@style/ImageViewSocialMedia"
+                    android:contentDescription="@string/instagram"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/img_profile_photo"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/img_twitter_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/img_profile_photo"
+                    tools:src="@drawable/ic_instagram_square" />
+                
+                <TextView
+                    android:id="@+id/tv_biography_title"
+                    style="@style/ListTextView.Detail.DetailPage.Title"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/biography"
+                    app:layout_constraintStart_toEndOf="@id/img_profile_photo"
+                    app:layout_constraintTop_toTopOf="parent" />
+                
+                <ProgressBar
+                    android:id="@+id/pb_biography"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/nested_scroll_view_biography"
+                    app:layout_constraintEnd_toEndOf="@+id/nested_scroll_view_biography"
+                    app:layout_constraintStart_toStartOf="@+id/nested_scroll_view_biography"
+                    app:layout_constraintTop_toTopOf="@+id/nested_scroll_view_biography" />
+                
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nested_scroll_view_biography"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_profile_photo"
+                    app:layout_constraintTop_toBottomOf="@id/tv_biography_title"
+                    app:layout_constraintVertical_bias="0.0">
+                    
+                    <TextView
+                        android:id="@+id/tv_biography"
+                        style="@style/ListTextView.Detail.DetailPage"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        tools:text="@string/biography_placeholder" />
+                </androidx.core.widget.NestedScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            
+            <TextView
+                android:id="@+id/tv_known_for_title"
+                style="@style/ListTextView.Detail.DetailPage.Title"
+                android:text="@string/known_for" />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_known_for"
+                style="@style/GridCastRecyclerViewBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp"
+                android:paddingBottom="4dp"
+                android:scrollbarStyle="outsideOverlay"
+                android:scrollbars="horizontal" />
+            
+            <TextView
+                android:id="@+id/tv_personal_info_title"
+                style="@style/ListTextView.Detail.DetailPage.Title"
+                android:text="@string/personal_info" />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_personal_info"
+                style="@style/DetailRecyclerView"
+                android:layout_marginTop="4dp"
+                tools:listitem="@layout/list_detail_row_other" />
+            
+            <TextView
+                android:id="@+id/tv_filmography_title"
+                style="@style/ListTextView.Detail.DetailPage.Title"
+                android:text="@string/filmography" />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_filmography"
+                style="@style/FilmographyRecyclerView"
+                android:layout_marginTop="4dp"
+                tools:listitem="@layout/list_credit_department" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

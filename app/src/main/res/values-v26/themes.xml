@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ListTextView.Detail.Overview">
+        <item name="android:textColor">@color/list_text_color_overview</item>
+        <item name="android:justificationMode">inter_word</item>
+    </style>
+    
+    <style name="ListTextView.Detail.DetailPage">
+        <item name="android:textColor">@color/list_text_color</item>
+        <item name="android:justificationMode">inter_word</item>
+    </style>
+    
+    <style name="ListTextView.Detail.Tagline">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:justificationMode">inter_word</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ListTextView.Detail.Overview">
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:textColor">#d9d9d9</item>
+    </style>
+</resources>

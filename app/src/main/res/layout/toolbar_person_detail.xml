@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ToolbarBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ToolbarTheme.Colored"
+    app:buttonGravity="center_vertical"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_scrollFlags="scroll|enterAlways|snap|snapMargins"
+    app:titleTextAppearance="@style/ToolbarTitleText">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/DetailConstraintLayoutStyle.Toolbar"
+        android:paddingVertical="8dp">
+        
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/ListTextView.Title.Colored"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Person Name" />
+        
+        <TextView
+            android:id="@+id/tv_known_for_1"
+            style="@style/ListTextView.Detail.DetailPage.Bordered"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Actor" />
+        
+        <TextView
+            android:id="@+id/tv_known_for_2"
+            style="@style/ListTextView.Detail.DetailPage.Bordered"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/tv_known_for_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Director" />
+        
+        <TextView
+            android:id="@+id/tv_known_for_3"
+            style="@style/ListTextView.Detail.DetailPage.Bordered"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/tv_known_for_2"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="Producer" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.appbar.MaterialToolbar>

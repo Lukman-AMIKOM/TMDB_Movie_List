@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="4dp"
+    android:layout_marginVertical="4dp"
+    android:elevation="3dp"
+    android:foreground="?android:selectableItemBackground"
+    app:cardCornerRadius="6dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/GridItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="8dp">
+        
+        <ProgressBar
+            android:id="@+id/pb_item_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/img_poster"
+            app:layout_constraintBottom_toBottomOf="@id/img_poster"
+            app:layout_constraintStart_toStartOf="@id/img_poster"
+            app:layout_constraintEnd_toEndOf="@id/img_poster" />
+        
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_poster"
+            android:layout_width="190dp"
+            android:layout_height="285dp"
+            android:contentDescription="@string/movie_poster"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedCornersImageView.Grid"
+            tools:src="@drawable/poster_placeholder" />
+        
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_favorite"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_poster"
+            tools:src="@drawable/ic_favorite_selected" />
+        
+        <TextView
+            android:id="@+id/tv_rating"
+            style="@style/ListTextView.Detail.DetailPage.Title"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="0dp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/img_favorite"
+            app:layout_constraintStart_toEndOf="@+id/img_favorite"
+            app:layout_constraintTop_toTopOf="@+id/img_favorite"
+            tools:text="10" />
+        
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/ListTextView.Detail.DetailPage.Title"
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:ellipsize="end"
+            android:fontFamily="@font/quantico"
+            android:maxLines="2"
+            android:minLines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_favorite"
+            tools:text="Movie Title" />
+        
+        <TextView
+            android:id="@+id/tv_release_date"
+            style="@style/ListTextView.Detail.GridSpecification"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="2020" />
+        
+        <TextView
+            android:id="@+id/tv_certification"
+            style="@style/ListTextView.Detail.GridSpecification"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@id/tv_release_date"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="PG" />
+        
+        <TextView
+            android:id="@+id/tv_runtime"
+            style="@style/ListTextView.Detail.GridSpecification"
+            android:layout_marginStart="4dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_certification"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="Runtime" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

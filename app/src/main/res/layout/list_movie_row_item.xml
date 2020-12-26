@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/ListItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+    <ProgressBar
+        android:id="@+id/pb_item_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/img_poster"
+        app:layout_constraintEnd_toEndOf="@id/img_poster"
+        app:layout_constraintStart_toStartOf="@id/img_poster"
+        app:layout_constraintTop_toTopOf="@+id/img_poster" />
+    
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_poster"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
+        android:contentDescription="@string/movie_poster"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedCornersImageView.List"
+        tools:src="@drawable/poster_placeholder" />
+    
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/ListTextView.Title.Colored"
+        android:layout_width="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="2"
+        app:layout_constraintEnd_toStartOf="@id/tv_index"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/img_poster"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Movie Title" />
+    
+    <LinearLayout
+        android:id="@+id/layout_rating"
+        style="@style/ListTextView.Detail.Specification.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="6dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/img_poster"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+        
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_favorite"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginEnd="2dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            tools:src="@drawable/ic_favorite_selected" />
+        
+        <TextView
+            android:id="@+id/tv_rating"
+            style="@style/ListTextView.Detail.Specification.Colored"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            tools:text="Average Rating" />
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/tv_certification"
+        style="@style/ListTextView.Detail.Specification.Colored"
+        app:layout_constraintStart_toEndOf="@+id/img_poster"
+        app:layout_constraintTop_toBottomOf="@+id/layout_rating"
+        tools:text="Certification" />
+    
+    <TextView
+        android:id="@+id/tv_genre"
+        style="@style/ListTextView.Detail.Specification.Colored"
+        android:layout_marginEnd="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tv_runtime"
+        app:layout_constraintTop_toBottomOf="@+id/layout_rating"
+        tools:text="Genre" />
+    
+    <TextView
+        android:id="@+id/tv_runtime"
+        style="@style/ListTextView.Detail.Specification.Colored"
+        app:layout_constraintStart_toEndOf="@id/tv_certification"
+        app:layout_constraintTop_toBottomOf="@+id/layout_rating"
+        tools:text="Runtime" />
+    
+    <TextView
+        android:id="@+id/tv_overview"
+        style="@style/ListTextView.Detail.Overview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:maxLines="4"
+        app:layout_constraintBottom_toBottomOf="@+id/img_poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_poster"
+        app:layout_constraintTop_toBottomOf="@+id/tv_runtime"
+        tools:text="Overview..." />
+    
+    <TextView
+        android:id="@+id/tv_index"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/bg_index"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SmallSp"
+        tools:text="#" />
+</androidx.constraintlayout.widget.ConstraintLayout>

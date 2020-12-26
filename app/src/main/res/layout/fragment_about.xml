@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/AboutBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.AboutFragment">
+    
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+        
+        <include
+            android:id="@+id/toolbar_about"
+            layout="@layout/toolbar_about" />
+    </com.google.android.material.appbar.AppBarLayout>
+    
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/img_profile_photo"
+                style="@style/AboutProfilePhoto"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:scaleType="centerInside"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="5dp"
+                app:civ_shadow="true"
+                app:civ_shadow_gravity="center"
+                app:civ_shadow_radius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.06"
+                tools:src="@drawable/img_profile_photo" />
+            
+            <ImageView
+                android:id="@+id/img_github_logo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="28dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@+id/img_profile_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.625"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/github_logo_white"
+                android:contentDescription="@string/github_link" />
+            
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/AboutTextView.Colored.Name"
+                android:text="@string/name"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_profile_photo" />
+            
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/AboutTextView"
+                android:layout_marginTop="5dp"
+                android:text="@string/email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+            
+            <TextView
+                android:id="@+id/tv_study_program"
+                style="@style/AboutTextView.Colored.SchoolInfo"
+                android:text="@string/bachelor_of_informatics"
+                app:layout_constraintBottom_toTopOf="@+id/tv_student_id"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email"
+                app:layout_constraintVertical_bias="1.0" />
+            
+            <TextView
+                android:id="@+id/tv_student_id"
+                style="@style/AboutTextView.Colored.SchoolInfo"
+                android:layout_marginTop="8dp"
+                android:text="@string/nim"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_university" />
+            
+            <TextView
+                android:id="@+id/tv_university"
+                style="@style/AboutTextView.Colored.SchoolInfo"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/university"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
