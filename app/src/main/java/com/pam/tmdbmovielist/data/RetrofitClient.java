@@ -1,5 +1,7 @@
 package com.pam.tmdbmovielist.data;
 
+import com.pam.tmdbmovielist.interfaces.Api;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 

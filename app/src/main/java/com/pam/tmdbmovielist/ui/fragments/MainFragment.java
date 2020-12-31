@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -38,6 +39,7 @@ import com.pam.tmdbmovielist.adapters.MovieAdapter;
 import com.pam.tmdbmovielist.adapters.MovieComparator;
 import com.pam.tmdbmovielist.data.DatabaseHelper;
 import com.pam.tmdbmovielist.data.MovieList;
+import com.pam.tmdbmovielist.data.PrefManager;
 import com.pam.tmdbmovielist.data.RetrofitClient;
 import com.pam.tmdbmovielist.interfaces.OnFavoriteClickCallback;
 import com.pam.tmdbmovielist.interfaces.OnMovieClickCallback;
@@ -59,6 +61,12 @@ import retrofit2.Response;
 public class MainFragment extends Fragment implements OnMovieClickCallback,
         OnFavoriteClickCallback, SearchView.OnQueryTextListener, RetrofitResponseListener {
     
+    public static final String PREF_THEME = "pref_theme";
+    public static final String KEY_NIGHT_MODE = "key_theme";
+    
+    private PrefManager prefManager;
+    
+    private MainActivity mainActivity;
     private AppBarLayout appBarLayout;
     private MaterialToolbar toolbar;
     private SearchView searchView;
@@ -113,8 +121,12 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
         inflater.inflate(R.menu.menu_main, menu);
         MenuCompat.setGroupDividerEnabled(menu, true);
         
+        if (mainActivity != null) {
+            prefManager = new PrefManager(mainActivity, PREF_THEME);
+            nightMode = prefManager.getDarkMode(KEY_NIGHT_MODE);
+        }
         MenuItem itemNightMode = menu.findItem(R.id.menu_night_mode);
-        itemNightMode.setTitle(nightMode ? getString(R.string.day_mode) : getString(R.string.night_mode));
+        itemNightMode.setTitle(nightMode ? getString(R.string.light_mode) : getString(R.string.dark_mode));
         
         initSearchView(menu);
         
@@ -133,6 +145,7 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
     }
     
     private void init(View view) {
+        mainActivity = (MainActivity) getActivity();
         appBarLayout = view.findViewById(R.id.app_bar_layout_main);
         toolbar = view.findViewById(R.id.main_toolbar);
         listTabLayout = view.findViewById(R.id.list_tab_layout);
@@ -148,7 +161,6 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
         appBarLayout.setExpanded(isExpanded);
         toolbar.setTitle("");
         
-        MainActivity mainActivity = (MainActivity) getActivity();
         if (mainActivity != null) {
             mainActivity.setSupportActionBar(toolbar);
             if (mainActivity.getSupportActionBar() != null) {
@@ -304,8 +316,6 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
     
     @Override
     public void onMovieClicked(Movie movie) {
-        MainActivity mainActivity = (MainActivity) getActivity();
-        
         if (mainActivity != null) {
             FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
             Call<String> call = RetrofitClient.getInstance().getMyApi().getDetailedMovie(movie.getId());
@@ -355,6 +365,7 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
         boolean isFavorite = movie.isFavorite();
         ListFragment listFragment = getSelectedTabFragment();
         DatabaseHelper db = new DatabaseHelper(getContext());
+        String action;
         
         if (isFavorite) {
             if (!favoriteList.contains(movie)) {
@@ -362,20 +373,27 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
                 favoriteFragment.setMovieList(favoriteList);
                 db.addFavorite(movie);
             }
+            
+            action = getString(R.string.favorite_add);
         } else {
             favoriteList.remove(movie);
             db.deleteFavorite(movie);
-            
-            if (listFragment.equals(favoriteFragment)) {
-                try {
-                    favoriteFragment.getMovieAdapter().remove(movie);
-                } catch (NullPointerException | IndexOutOfBoundsException e) {
+    
+            if (listFragment != null) {
+                if (listFragment.equals(favoriteFragment)) {
+                    try {
+                        favoriteFragment.getMovieAdapter().remove(movie);
+                    } catch (NullPointerException | IndexOutOfBoundsException ignored) {
+                    }
+                } else {
+                    favoriteFragment.setMovieList(favoriteList);
                 }
-            } else {
-                favoriteFragment.setMovieList(favoriteList);
             }
+    
+            action = getString(R.string.favorite_remove);
         }
-        
+    
+        Toast.makeText(getContext(), getString(R.string.favorite_notification, movie.getTitle(), action), Toast.LENGTH_SHORT).show();
         updateList(movie);
     }
     
@@ -492,7 +510,6 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
         if (item.getItemId() == R.id.menu_about) {
             AboutFragment aboutFragment = new AboutFragment();
             
-            MainActivity mainActivity = (MainActivity) getActivity();
             if (mainActivity != null) {
                 FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
                 fragmentManager
@@ -503,7 +520,6 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
                         .commit();
             }
         } else if (item.getItemId() == R.id.menu_night_mode) {
-            MainActivity mainActivity = (MainActivity) getActivity();
             if (mainActivity != null) {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     if (!nightMode) {
@@ -512,6 +528,7 @@ public class MainFragment extends Fragment implements OnMovieClickCallback,
                         mainActivity.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     }
                     nightMode = !nightMode;
+                    prefManager.setDarkMode(KEY_NIGHT_MODE, nightMode);
                 }, 400);
             }
         }

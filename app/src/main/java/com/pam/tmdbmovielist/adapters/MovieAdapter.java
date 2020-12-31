@@ -170,16 +170,20 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             }
         }
         
+//        int idx = 0;
 //        int left = 0;
 //        int right = movieSortedList.size();
-
+//        int pass = 0;
+//        int maxPass = movieSortedList.size() / 2;
+//
 //        while (left < right) {
 //            int middle = (left + right) / 2;
 //            Movie item = movieSortedList.get(middle);
 //            int compare = comparator.compare(movie, item);
 //
+//            System.out.println("Comparing " + movie.getTitle() + " with " + item.getTitle() + ": " + compare);
 //            if (compare == 0) {
-//                index = middle;
+//                idx = middle;
 //                break;
 //            } else if (compare < 0) {
 //                right = middle;
@@ -187,7 +191,8 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 //                left = middle;
 //            }
 //        }
-        
+//
+//        System.out.println("index: " + index + ", idx: " + idx);
         movieSortedList.removeItemAt(index);
         notifyItemRangeChanged(index, movieSortedList.size() - index);
     }

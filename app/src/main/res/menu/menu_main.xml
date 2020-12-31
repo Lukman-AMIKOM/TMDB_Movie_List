@@ -14,7 +14,7 @@
     <group android:id="@+id/menu_group">
         <item
             android:id="@+id/menu_night_mode"
-            android:title="@string/night_mode"
+            android:title="@string/dark_mode"
             app:showAsAction="never" />
     </group>
     
